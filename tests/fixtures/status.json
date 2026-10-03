@@ -1,0 +1,140 @@
+{
+ "updated": "2026-10-03T02:32:43+00:00",
+ "count": 2,
+ "last_run": "2026-10-02T21:32:43+00:00",
+ "next_run": "2026-10-03T21:32:43.725139+00:00",
+ "config": {
+  "pax": 1,
+  "min_seats": 1,
+  "max_miles_pp": 90000,
+  "interval_hours": 24,
+  "watches": [
+   {
+    "name": "Out",
+    "from": [
+     "SYD"
+    ],
+    "to": [
+     "PVG",
+     "HGH"
+    ],
+    "start": "2027-05-10",
+    "end": "2027-05-16"
+   },
+   {
+    "name": "Back",
+    "from": [
+     "PVG"
+    ],
+    "to": [
+     "SYD"
+    ],
+    "start": "2027-05-20",
+    "end": "2027-05-26"
+   }
+  ]
+ },
+ "runs": [
+  {
+   "at": "2026-10-02T21:32:43+00:00",
+   "secs": 0,
+   "attempts": 21,
+   "errors": 0,
+   "alerts": 1,
+   "found": 2,
+   "ok": true
+  },
+  {
+   "at": "2026-10-01T02:32:43+00:00",
+   "secs": 0,
+   "attempts": 21,
+   "errors": 0,
+   "alerts": 0,
+   "found": 1,
+   "ok": true
+  },
+  {
+   "at": "2026-09-30T02:32:43+00:00",
+   "secs": 0,
+   "attempts": 0,
+   "errors": 0,
+   "alerts": 0,
+   "found": 1,
+   "ok": false,
+   "note": "login needed"
+  },
+  {
+   "at": "2026-09-29T02:32:43+00:00",
+   "secs": 0,
+   "attempts": 21,
+   "errors": 0,
+   "alerts": 1,
+   "found": 1,
+   "ok": true
+  },
+  {
+   "at": "2026-09-28T02:32:43+00:00",
+   "secs": 0,
+   "attempts": 21,
+   "errors": 0,
+   "alerts": 0,
+   "found": 0,
+   "ok": true
+  },
+  {
+   "at": "2026-09-27T02:32:43+00:00",
+   "secs": 0,
+   "attempts": 21,
+   "errors": 0,
+   "alerts": 1,
+   "found": 1,
+   "ok": true
+  }
+ ],
+ "current": [
+  {
+   "origin": "SYD",
+   "dest": "HGH",
+   "depart": "2027-05-12",
+   "flights": "MU562 + MU2543",
+   "miles_pp": 88000,
+   "taxes_usd": 95,
+   "seats": 2,
+   "first_seen": "2026-10-02T21:32:43+00:00"
+  },
+  {
+   "origin": "PVG",
+   "dest": "SYD",
+   "depart": "2027-05-24",
+   "flights": "CA177",
+   "miles_pp": 62000,
+   "taxes_usd": 74,
+   "seats": 1,
+   "first_seen": "2026-09-29T02:32:43+00:00"
+  }
+ ],
+ "history": [
+  {
+   "origin": "SYD",
+   "dest": "PVG",
+   "depart": "2027-05-14",
+   "flights": "SQ221+SQ830",
+   "miles_pp": 75000,
+   "taxes_usd": 88,
+   "seats": 2,
+   "first_seen": "2026-09-27T02:32:43+00:00",
+   "gone_at": "2026-09-28T02:32:43+00:00"
+  },
+  {
+   "origin": "SYD",
+   "dest": "PVG",
+   "depart": "2027-05-14",
+   "flights": "SQ221+SQ830",
+   "miles_pp": 75000,
+   "taxes_usd": 88,
+   "seats": 1,
+   "first_seen": "2026-09-03T02:32:43.725139+00:00",
+   "gone_at": "2026-09-05T02:32:43.725139+00:00"
+  }
+ ]
+}

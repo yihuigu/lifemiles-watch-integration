@@ -1,0 +1,12 @@
+{
+  "domain": "lifemiles_watch",
+  "name": "LifeMiles Watch",
+  "codeowners": ["@yihuigu"],
+  "config_flow": true,
+  "documentation": "https://github.com/yihuigu/lifemiles-watch-integration",
+  "integration_type": "service",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/yihuigu/lifemiles-watch-integration/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}

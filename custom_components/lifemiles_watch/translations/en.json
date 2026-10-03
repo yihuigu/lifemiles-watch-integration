@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to the LifeMiles watcher",
+        "description": "Enter the address of the machine running the watcher app (it serves the status at http://HOST:PORT/status.json).",
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the watcher at that address.",
+      "invalid_response": "That address answered, but it is not a LifeMiles watcher.",
+      "invalid_host": "Enter only the host name or IP address, without http:// or a path.",
+      "unknown": "Unexpected error. Check the Home Assistant log."
+    },
+    "abort": {
+      "already_configured": "This watcher is already set up."
+    }
+  }
+}
