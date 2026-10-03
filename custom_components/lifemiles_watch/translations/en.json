@@ -3,10 +3,26 @@
     "step": {
       "user": {
         "title": "Connect to the LifeMiles watcher",
-        "description": "Enter the address of the machine running the watcher app (it serves the status at http://HOST:PORT/status.json).",
+        "description": "Enter the address of the machine running the watcher app (it serves the status at http://HOST:PORT/status.json). The token is optional: it lets this integration change which routes are searched.",
         "data": {
           "host": "Host",
-          "port": "Port"
+          "port": "Port",
+          "api_token": "Token (optional)"
+        },
+        "data_description": {
+          "api_token": "The watcher's WATCH_API_TOKEN. Leave empty to only read the status."
+        }
+      },
+      "reconfigure": {
+        "title": "Change the watcher connection",
+        "description": "Change the address, or add the token that switches route editing on.",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "api_token": "Token (optional)"
+        },
+        "data_description": {
+          "api_token": "The watcher's WATCH_API_TOKEN. Leave empty to only read the status."
         }
       }
     },
@@ -14,10 +30,87 @@
       "cannot_connect": "Could not reach the watcher at that address.",
       "invalid_response": "That address answered, but it is not a LifeMiles watcher.",
       "invalid_host": "Enter only the host name or IP address, without http:// or a path.",
+      "invalid_auth": "The watcher rejected that token.",
+      "read_only": "The watcher has no token set (WATCH_API_TOKEN), so routes cannot be edited. Set it on the watcher, or leave the token empty here.",
+      "watcher_outdated": "That watcher is too old to edit routes. Update it first.",
       "unknown": "Unexpected error. Check the Home Assistant log."
     },
     "abort": {
-      "already_configured": "This watcher is already set up."
+      "already_configured": "This watcher is already set up.",
+      "reconfigure_successful": "The connection was updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Watched routes",
+        "description": "Changes apply at the watcher's next daily batch.",
+        "menu_options": {
+          "add": "Add a route",
+          "edit": "Edit a route",
+          "remove": "Remove routes",
+          "reset": "Reset to the watcher's defaults"
+        }
+      },
+      "add": {
+        "title": "Add a route",
+        "description": "Every airport in From is searched to every airport in To, one way, for each date in the range. Pick from the list or type any 3-letter airport code.\n\n{details}",
+        "data": {
+          "name": "Name (optional)",
+          "from": "From",
+          "to": "To",
+          "start": "First date",
+          "end": "Last date",
+          "return_start": "Return: first date (optional)",
+          "return_end": "Return: last date (optional)"
+        },
+        "data_description": {
+          "return_start": "Fill both return dates to also search the same airports in the opposite direction."
+        }
+      },
+      "edit": {
+        "title": "Edit a route",
+        "description": "Choose the route to change.",
+        "data": {
+          "block": "Route"
+        }
+      },
+      "edit_block": {
+        "title": "Edit the route",
+        "description": "{details}",
+        "data": {
+          "name": "Name (optional)",
+          "from": "From",
+          "to": "To",
+          "start": "First date",
+          "end": "Last date"
+        }
+      },
+      "remove": {
+        "title": "Remove routes",
+        "description": "Choose the routes to stop watching. Their availability leaves \"Available now\" and moves to the history.",
+        "data": {
+          "blocks": "Routes"
+        }
+      },
+      "reset": {
+        "title": "Reset the routes",
+        "description": "Stop using the list saved from Home Assistant and go back to the routes in the watcher's config.toml.",
+        "data": {
+          "confirm": "Yes, reset to the defaults"
+        }
+      }
+    },
+    "error": {
+      "return_dates": "Fill in both return dates, or neither.",
+      "invalid_watches": "The watcher rejected this route. See the reasons above."
+    },
+    "abort": {
+      "cannot_connect": "Could not reach the watcher.",
+      "no_token": "Routes can only be edited with the watcher's token. Add it with Reconfigure on the integration.",
+      "watcher_read_only": "The watcher has no token set (WATCH_API_TOKEN), so it is read-only.",
+      "watcher_outdated": "That watcher is too old to edit routes. Update it first.",
+      "invalid_auth": "The watcher rejected the token. Update it with Reconfigure on the integration."
     }
   }
 }

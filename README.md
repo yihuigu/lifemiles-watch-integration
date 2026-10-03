@@ -19,6 +19,24 @@ Add it by hand as a custom repository:
 4. Settings -> Devices & services -> **Add integration** -> *LifeMiles Watch*, and enter the
    watcher's host and port (default 8099). The address is checked before anything is created.
 
+## Editing the watched routes
+
+With the watcher's token you can change what it searches without touching its config files:
+**Settings -> Devices & services -> LifeMiles Watch -> Configure**.
+
+- **Add a route**: airports From and To (pick from the list or type any 3-letter code) and a date
+  range. Every From airport is searched to every To airport, one way, for each date. Fill the
+  optional return dates to also add the opposite direction.
+- **Edit a route**, **Remove routes**, or **Reset** to the watcher's own defaults.
+- Changes apply at the watcher's next daily batch, and the route list shown on the card updates at
+  once. The watcher rejects anything that would be too much traffic for your LifeMiles account
+  (at most 20 route blocks, 120 days per block, 400 searches in total) and tells you why.
+
+It needs the watcher's `WATCH_API_TOKEN`: enter it when you add the integration, or later with
+**Reconfigure**. Without a token the integration only reads, and **Configure** says so. The token is
+sent to the watcher as a bearer token over plain HTTP on your network, so keep the watcher on a
+network you trust.
+
 ## What you get
 
 One device, "LifeMiles watch", polled every 5 minutes:
@@ -36,7 +54,8 @@ If the watcher cannot be reached the entities become unavailable and recover by 
 
 ```text
 last_run, next_run   ISO 8601 timestamps (next_run may be null while a run is in progress)
-config               {pax, min_seats, max_miles_pp, interval_hours, watches: [...]}
+config               {pax, min_seats, max_miles_pp, interval_hours, source, editable,
+                      watches: [{name, from: [...], to: [...], start, end}]}
 runs                 newest first: {at, ok, secs, attempts, errors, alerts, found, note?}
 current              {origin, dest, depart, flights, miles_pp, taxes_usd, seats, first_seen}
 history              the same plus gone_at, newest first
